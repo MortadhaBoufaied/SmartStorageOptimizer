@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SmartStorage.AI/1.0.0": {
+        "dependencies": {
+          "SmartStorage.Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "SmartStorage.AI.dll": {}
+        }
+      },
+      "SmartStorage.Abstractions/1.0.0": {
+        "runtime": {
+          "SmartStorage.Abstractions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SmartStorage.AI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmartStorage.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

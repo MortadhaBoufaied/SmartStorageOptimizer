@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartStorage.Abstractions\SmartStorage.Abstractions.csproj" />
+    <ProjectReference Include="..\SmartStorage.Core\SmartStorage.Core.csproj" />
+    <ProjectReference Include="..\SmartStorage.Plugins\SmartStorage.Plugins.csproj" />
+    <ProjectReference Include="..\SmartStorage.AI\SmartStorage.AI.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+</Project>

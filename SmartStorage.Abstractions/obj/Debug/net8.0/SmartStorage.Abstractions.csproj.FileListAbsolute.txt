@@ -1,0 +1,13 @@
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\bin\Debug\net8.0\SmartStorage.Abstractions.deps.json
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\bin\Debug\net8.0\SmartStorage.Abstractions.dll
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\bin\Debug\net8.0\SmartStorage.Abstractions.pdb
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\bin\Debug\net8.0\SmartStorage.Abstractions.xml
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\SmartStorage.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\SmartStorage.Abstractions.AssemblyInfoInputs.cache
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\SmartStorage.Abstractions.AssemblyInfo.cs
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\SmartStorage.Abstractions.csproj.CoreCompileInputs.cache
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\SmartStorage.Abstractions.dll
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\refint\SmartStorage.Abstractions.dll
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\SmartStorage.Abstractions.xml
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\SmartStorage.Abstractions.pdb
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Abstractions\obj\Debug\net8.0\ref\SmartStorage.Abstractions.dll

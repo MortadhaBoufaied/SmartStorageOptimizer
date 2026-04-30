@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartStorage.UI</name>
+    </assembly>
+    <members>
+        <member name="T:SmartStorage.UI.App">
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:SmartStorage.UI.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:SmartStorage.UI.MainWindow">
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:SmartStorage.UI.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
