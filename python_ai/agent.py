@@ -57,8 +57,7 @@ def main():
                 "tags": ["error"],
                 "explanation": f"agent error: {exc}",
             }
-        sys.stdout.write(json.dumps(payload) + "
-")
+        sys.stdout.write(json.dumps(payload) + "")
         sys.stdout.flush()
 
 

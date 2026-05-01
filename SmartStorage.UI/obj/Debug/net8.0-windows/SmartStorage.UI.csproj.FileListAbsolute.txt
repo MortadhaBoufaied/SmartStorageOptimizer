@@ -100,3 +100,4 @@ C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherc
 C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.UI\obj\Debug\net8.0-windows\SmartStorage.UI.pdb
 C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.UI\obj\Debug\net8.0-windows\SmartStorage.UI.genruntimeconfig.cache
 C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.UI\obj\Debug\net8.0-windows\ref\SmartStorage.UI.dll
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.UI\obj\Debug\net8.0-windows\SmartStorage.UI.sourcelink.json

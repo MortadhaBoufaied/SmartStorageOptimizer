@@ -6,11 +6,13 @@ namespace SmartStorage.Core.Indexing;
 
 public sealed class FileIndexService
 {
-    private readonly FileRepository _repository;
+    private readonly SqliteFileRepository _repository;
     private readonly IFileScanner _scanner;
     private readonly IMetadataExtractor _metadata;
     private readonly IServiceProvider _serviceProvider;
     private readonly HashSet<string> _excludedPaths;
+    private readonly int _batchSize;
+    private readonly int _maxDegreeOfParallelism;
 
     private static readonly string[] DefaultExcludes = new[]
     {
@@ -25,12 +27,21 @@ public sealed class FileIndexService
         // Note: intentionally NOT excluding Downloads by default
     };
 
-    public FileIndexService(FileRepository repository, IFileScanner scanner, IMetadataExtractor metadata, IServiceProvider serviceProvider, IEnumerable<string>? excludedPaths = null)
+    public FileIndexService(
+        SqliteFileRepository repository,
+        IFileScanner scanner,
+        IMetadataExtractor metadata,
+        IServiceProvider serviceProvider,
+        IEnumerable<string>? excludedPaths = null,
+        int batchSize = 1000,
+        int maxDegreeOfParallelism = 0)
     {
         _repository = repository;
         _scanner = scanner;
         _metadata = metadata;
         _serviceProvider = serviceProvider;
+        _batchSize = batchSize;
+        _maxDegreeOfParallelism = maxDegreeOfParallelism > 0 ? maxDegreeOfParallelism : Environment.ProcessorCount;
 
         _excludedPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach (var d in DefaultExcludes) _excludedPaths.Add(Path.GetFullPath(d));
@@ -73,21 +84,65 @@ public sealed class FileIndexService
         }
 
         var count = 0;
-        await foreach (var record in _scanner.ScanAsync(rootPath, cancellationToken))
+        var batch = new List<FileRecord>(_batchSize);
+
+        // Process files in parallel with batching
+        await Parallel.ForEachAsync(
+            _scanner.ScanAsync(rootPath, cancellationToken),
+            new ParallelOptions
+            {
+                MaxDegreeOfParallelism = _maxDegreeOfParallelism,
+                CancellationToken = cancellationToken
+            },
+            async (record, ct) =>
+            {
+                try
+                {
+                    var enriched = await _metadata.EnrichAsync(record, ct);
+
+                    lock (batch)
+                    {
+                        batch.Add(enriched);
+                        if (batch.Count >= _batchSize)
+                        {
+                            var currentBatch = batch.ToList();
+                            batch.Clear();
+                            _ = Task.Run(async () =>
+                            {
+                                await _repository.UpsertBatchAsync(currentBatch, ct);
+                            }, ct);
+                        }
+                    }
+
+                    Interlocked.Increment(ref count);
+                }
+                catch
+                {
+                    // Continue indexing on metadata enrichment failure
+                    lock (batch)
+                    {
+                        batch.Add(record);
+                        if (batch.Count >= _batchSize)
+                        {
+                            var currentBatch = batch.ToList();
+                            batch.Clear();
+                            _ = Task.Run(async () =>
+                            {
+                                await _repository.UpsertBatchAsync(currentBatch, ct);
+                            }, ct);
+                        }
+                    }
+
+                    Interlocked.Increment(ref count);
+                }
+            });
+
+        // Flush remaining records in the batch
+        if (batch.Count > 0)
         {
-            try
-            {
-                var enriched = await _metadata.EnrichAsync(record, cancellationToken);
-                await _repository.UpsertAsync(enriched, cancellationToken);
-                count++;
-            }
-            catch
-            {
-                // Continue indexing on metadata enrichment failure
-                await _repository.UpsertAsync(record, cancellationToken);
-                count++;
-            }
+            await _repository.UpsertBatchAsync(batch, cancellationToken);
         }
+
         return count;
     }
 
@@ -99,5 +154,15 @@ public sealed class FileIndexService
     public async Task<int> DeleteStaleEntriesAsync(TimeSpan maxAge, CancellationToken cancellationToken = default)
     {
         return await _repository.DeleteStaleEntriesAsync(maxAge, cancellationToken);
+    }
+
+    public async Task<long> GetTotalSizeAsync(CancellationToken cancellationToken = default)
+    {
+        return await _repository.GetTotalSizeAsync(cancellationToken);
+    }
+
+    public async Task<int> GetFileCountAsync(CancellationToken cancellationToken = default)
+    {
+        return await _repository.GetFileCountAsync(cancellationToken);
     }
 }

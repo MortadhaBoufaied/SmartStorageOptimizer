@@ -18,6 +18,7 @@ using SmartStorage.Infrastructure.FileSystem;
 using SmartStorage.Infrastructure.Storage;
 using SmartStorage.Plugins.Cleaners;
 using SmartStorage.Plugins.ProjectDetectors;
+using Microsoft.Extensions.Configuration;
 
 namespace SmartStorage.UI;
 
@@ -32,9 +33,9 @@ public partial class App : System.Windows.Application
             {
                 var storageDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SmartStorageOptimizer");
                 Directory.CreateDirectory(storageDir);
-                var csvPath = Path.Combine(storageDir, "index.csv");
+                var dbPath = Path.Combine(storageDir, "fileindex.db");
 
-                services.AddSingleton<FileRepository>(_ => new FileRepository(csvPath));
+                services.AddSingleton<SqliteFileRepository>(_ => new SqliteFileRepository(dbPath));
                 services.AddSingleton<IFileScanner, FileScanner>();
                 services.AddSingleton<IMetadataExtractor, MetadataExtractor>();
                 services.AddSingleton<IUsageTracker, UsageTracker>();
@@ -54,12 +55,27 @@ public partial class App : System.Windows.Application
                 services.AddSingleton<DotNetCleaner>();
                 // Read optional excluded paths from configuration and combine with defaults in FileIndexService
                 var configured = ctx.Configuration.GetSection("Indexing:ExcludedPaths").Get<string[]>() ?? Array.Empty<string>();
+                var batchSize = ctx.Configuration.GetValue<int>("Indexing:BatchSize", 1000);
+                var maxDegreeOfParallelism = ctx.Configuration.GetValue<int>("Indexing:MaxDegreeOfParallelism", 0);
+                var hashAlgorithmStr = ctx.Configuration.GetValue<string>("Indexing:HashAlgorithm", "XXHash64");
+                var maxHashFileSizeMB = ctx.Configuration.GetValue<int>("Indexing:MaxHashFileSizeMB", 25);
+
+                var hashAlgorithm = hashAlgorithmStr?.ToLowerInvariant() switch
+                {
+                    "none" => HashAlgorithm.None,
+                    "sha256" => HashAlgorithm.SHA256,
+                    "xxhash64" or _ => HashAlgorithm.XXHash64
+                };
+
+                services.AddSingleton<MetadataExtractor>(_ => new MetadataExtractor(hashAlgorithm, maxHashFileSizeMB * 1024 * 1024));
                 services.AddSingleton<FileIndexService>(sp => new FileIndexService(
-                    sp.GetRequiredService<FileRepository>(),
+                    sp.GetRequiredService<SqliteFileRepository>(),
                     sp.GetRequiredService<IFileScanner>(),
                     sp.GetRequiredService<IMetadataExtractor>(),
                     sp,
-                    configured
+                    configured,
+                    batchSize,
+                    maxDegreeOfParallelism
                 ));
                 services.AddSingleton<FileChangeTracker>();
                 services.AddSingleton<ScanService>();

@@ -6,4 +6,7 @@
     <ProjectReference Include="..\SmartStorage.Abstractions\SmartStorage.Abstractions.csproj" />
     <ProjectReference Include="..\SmartStorage.Infrastructure\SmartStorage.Infrastructure.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.IO.Hashing" Version="8.0.0" />
+  </ItemGroup>
 </Project>

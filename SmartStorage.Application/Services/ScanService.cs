@@ -9,9 +9,9 @@ public sealed class ScanService
 {
     private readonly IFileScanner _scanner;
     private readonly IMetadataExtractor _metadata;
-    private readonly FileRepository _repository;
+    private readonly SqliteFileRepository _repository;
 
-    public ScanService(IFileScanner scanner, IMetadataExtractor metadata, FileRepository repository)
+    public ScanService(IFileScanner scanner, IMetadataExtractor metadata, SqliteFileRepository repository)
     {
         _scanner = scanner;
         _metadata = metadata;

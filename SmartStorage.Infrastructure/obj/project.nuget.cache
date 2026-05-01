@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "sIH3sEq+oH0=",
+  "dgSpecHash": "qfL6Bj87BEw=",
   "success": true,
   "projectFilePath": "C:\\Users\\boufa\\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\\Bureau\\SmartStorageOptimizer\\SmartStorage.Infrastructure\\SmartStorage.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\boufa\\.nuget\\packages\\microsoft.data.sqlite\\8.0.0\\microsoft.data.sqlite.8.0.0.nupkg.sha512",
     "C:\\Users\\boufa\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.8\\microsoft.data.sqlite.core.8.0.8.nupkg.sha512",
     "C:\\Users\\boufa\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.8\\microsoft.entityframeworkcore.8.0.8.nupkg.sha512",
     "C:\\Users\\boufa\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.8\\microsoft.entityframeworkcore.abstractions.8.0.8.nupkg.sha512",

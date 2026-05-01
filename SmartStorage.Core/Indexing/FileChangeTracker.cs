@@ -4,13 +4,13 @@ namespace SmartStorage.Core.Indexing;
 
 public sealed class FileChangeTracker : IDisposable
 {
-    private readonly FileRepository _repository;
+    private readonly SqliteFileRepository _repository;
     private readonly Dictionary<string, FileSystemWatcher> _watchers = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, DateTime> _updateDebounce = new(StringComparer.OrdinalIgnoreCase);
     private readonly object _watcherLock = new();
     private const int DebounceDelayMs = 500; // Prevent rapid successive updates
 
-    public FileChangeTracker(FileRepository repository)
+    public FileChangeTracker(SqliteFileRepository repository)
     {
         _repository = repository;
     }

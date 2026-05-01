@@ -4,5 +4,10 @@
         <name>SmartStorage.Infrastructure</name>
     </assembly>
     <members>
+        <member name="T:SmartStorage.Infrastructure.Storage.FileRepository">
+            <summary>
+            CSV-backed repository for file index. Simple, process-local implementation.
+            </summary>
+        </member>
     </members>
 </doc>

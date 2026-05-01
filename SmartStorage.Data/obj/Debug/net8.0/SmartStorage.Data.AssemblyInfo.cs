@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartStorage.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7a875d85c811a0e9a58fe7280d3b7507d568aa0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d048ab6453fdbcba0f010e91c98228fa11bb6902")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartStorage.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartStorage.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

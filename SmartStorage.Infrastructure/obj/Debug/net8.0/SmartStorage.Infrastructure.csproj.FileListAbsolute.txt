@@ -19,3 +19,4 @@ C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherc
 C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Infrastructure\obj\Debug\net8.0\SmartStorage.Infrastructure.xml
 C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Infrastructure\obj\Debug\net8.0\SmartStorage.Infrastructure.pdb
 C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Infrastructure\obj\Debug\net8.0\ref\SmartStorage.Infrastructure.dll
+C:\Users\boufa\OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique\Bureau\SmartStorageOptimizer\SmartStorage.Infrastructure\obj\Debug\net8.0\SmartStorage.Infrastructure.sourcelink.json
